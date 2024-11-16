@@ -3,9 +3,20 @@ import './Header.css';
 
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const toggleMenu = () => {
-    setIsExpanded((prev) => !prev);
+    if (!isExpanded) {
+      setIsExpanded(true);
+      setTimeout(() => {
+        setIsMenuVisible(true);
+      }, 1000); // Delay for bubble animation
+    } else {
+      setIsMenuVisible(false);
+      setTimeout(() => {
+        setIsExpanded(false);
+      }, 300); // Delay for menu disappearance
+    }
   };
 
   return (
@@ -38,7 +49,7 @@ const Header = () => {
           </svg>
         </div>
       </div>
-      <nav className={isExpanded ? 'expanded' : ''}>
+      <nav className={`${isMenuVisible ? 'expanded' : ''}`}>
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
