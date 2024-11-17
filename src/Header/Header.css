@@ -11,7 +11,7 @@
 @media (max-width: 768px) { 
   .container { flex-direction: column; /* Stack items vertically */ 
   align-items: center; /* Center align items */ 
-  padding-top: 10px; /* Adjust padding */ 
+  padding-top: 20px; /* Adjust padding */ 
   padding-bottom: 10px; /* Adjust padding */ } 
   .toggle-button { margin-bottom: 15px; /* Add space below the button */
   }
