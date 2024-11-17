@@ -67,21 +67,188 @@
   }
 /* ================= */
 
-@media (max-width: 768px) {
-    .me-5{
-        padding-left:50px;
-    }
-    img {
-        width: 200px;
-        height: 200px;
-    }
+/* ----- Text Animation 1 ----- */
+.concept-seven .animated-word {
+  display: inline-block;
+  position: relative;
+  letter-spacing: 25px;
+  transition: color 0.6s ease;
+}
+.concept-seven .animated-word::after {
+  content: attr(data-word);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  letter-spacing: 10px;
+  transition: color 0.6s ease, transform 0.6s ease;
+  transform: scale(1);
+  z-index: -1;
+  opacity: 0;
 }
 
+.concept-seven .animated-word:hover {
+  color: rgba(149, 149, 149, 0.8);
+}
+
+.concept-seven .animated-word:hover::after {
+  color: rgba(40, 40, 40, 0.8);
+  transform: scale(2);
+  opacity: 1;
+  animation: jump-out 0.6s ease forwards; 
+}
+
+@keyframes jump-out {
+  0% {
+      opacity: 0;
+      transform: scale(1);
+  }
+  20% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: scale(2);
+  }
+}
+
+
+/* ----- Software Engineer" ----- */
+.animated-profession {
+  display: inline-block;
+  position: relative;
+  transition: color 0.6s ease;
+}
+
+.animated-profession::after {
+  content: attr(data-word); 
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: transparent;
+  transition: color 0.6s ease, transform 0.6s ease;
+  z-index: -1; 
+  opacity: 0;
+  pointer-events: none;
+}
+
+.animated-profession:hover::after {
+  color: rgba(40, 40, 40, 0.8); 
+  transform: translate(15px, 15px) scale(1.5);
+  opacity: 1;
+  animation: shadow-float 0.6s ease forwards;
+}
+
+@keyframes shadow-float {
+  0% {
+      opacity: 0;
+      transform: translate(0, 0) scale(1);
+  }
+  20% {
+      opacity: 1;
+      transform: translate(5px, 5px) scale(1.1);
+  }
+  100% {
+      opacity: 0;
+      transform: translate(10px, 10px) scale(1.2);
+  }
+}
+
+/* ============= */
+
+
+
+/* ----- For mobile screens ----- */
 @media (max-width: 768px) {
-    .mw-5 {
-        padding-right: 50px;
-    }
-    .me-5 {
-        padding-left: 50px;
-    }
+  .container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+  .ms-5, .me-5 {
+      padding: 10;
+  }
+  img {
+      width: 150px; /* Adjust the image size for smaller screens */
+      height: auto;
+  }
+}
+
+/* For medium screens like iPads */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+  .ms-md-5, .me-md-5 {
+      padding: 10px; /* Adjust padding to avoid too much space */
+  }
+  img {
+      width: 150px; /* Set a reasonable size for medium screens */
+      height: auto;
+  }
+}
+
+
+/* ----- Image Slider Animation ----- */
+.slider {
+  position: relative;
+  width: 300px; /* Adjust as needed */
+  height: 400px; /* Adjust as needed */
+  overflow: hidden;
+}
+
+/* Base styles for each slide */
+.slider-image {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 0;
+}
+
+.slider-image.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Slicing effect */
+.slider-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transition: clip-path 1.5s ease-in-out;
+}
+
+.slider-image.active::before {
+  clip-path: polygon(
+    0 0, 50% 0, 50% 100%, 0 100%,
+    50% 0, 100% 0, 100% 100%, 50% 100%
+  ); /* Start with a split screen effect */
+}
+
+/* Keyframes for horizontal slicing */
+@keyframes slice {
+  0%, 100% {
+      clip-path: polygon(
+        0 0, 50% 0, 50% 100%, 0 100%,
+        50% 0, 100% 0, 100% 100%, 50% 100%
+      ); /* Initial and final state: split in the middle */
+  }
+  50% {
+      clip-path: polygon(
+        0 0, 100% 0, 100% 100%, 0 100%
+      ); /* Fully visible state */
+  }
 }

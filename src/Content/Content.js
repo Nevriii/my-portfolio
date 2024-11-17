@@ -1,26 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Content.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BarongPic from '../Images/barong-pic.jpg';
+import BarongPic from '../Images/barong-pic.png';
+import GradPic from '../Images/grad-pic.png';
+
+const Images = [BarongPic, GradPic];
 
 const Content = () => {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % Images.length);
+        }, 3000); // Change image every 2 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <div className="container d-flex align-items-center justify-center-between my-5">
-            <div className='ms-5'>
-                <h1 className="display-4 roboto-thin ms-5">
-                    Hello, I am <span className="roboto-black text-info w-75 p-3">Ervin</span>
+        <div className="container d-flex flex-column flex-md-row align-items-center justify-content-center my-5">
+            <div className="text-content ms-md-1 text-center text-md-start concept-seven">
+                <h1 className="display-4 roboto-thin ms-md-1">
+                    <span className="animated-word hello" data-word="Hello,">Hello,</span>
+                    <span className="animated-word i" data-word="I">I</span>
+                    <span className="animated-word am" data-word="am">am</span>
+                    <span className="animated-word name text-info" data-word="Ervin">Ervin</span>
                 </h1>
-                <p className="roboto-light">
-                    An aspiring <span className="roboto-black text-success">Software Engineer</span>
+                <p className="text-content ms-md-2 text-center text-md-start roboto-light concept-three">
+                    An aspiring <span className="animated-profession roboto-black text-success" data-word="Software Engineer">Software Engineer</span>
                 </p>
+
             </div>
-            <div className="d-flex justify-content-center me-5">
-                <img
-                    src={BarongPic}
-                    alt="Ervin Pogi !!"
-                    className="rounded shadow me-5"
-                    style={{ width: '350px', height: '350px' }}
-                />
+            <div className="d-flex justify-content-center me-md-5">
+                <div className="slider">
+                    {Images.map((image, index) => (
+                        <div
+                            className={`slider-image ${index === currentImageIndex ? 'active' : ''}`}
+                            key={index}
+                            style={{ backgroundImage: `url(${image})` }}
+                        ></div>
+                    ))}
+                </div>
             </div>
         </div>
     );
