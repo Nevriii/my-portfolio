@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Content.css';
-import BarongPic from '../Images/barong-pic-bg.jpg';
-import GradPic from '../Images/grad-pic-bg.jpg';
+import BarongPic from '../Images/barong-pic.png';
+import GradPic from '../Images/grad-pic.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const images = [BarongPic, GradPic]; // Add more classes if you have more images

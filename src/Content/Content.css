@@ -255,38 +255,3 @@
       ); /* Fully visible state */
   }
 }
-
-
-
-
-
-img {
-  mask: url("../Images/grad-pic-bg.jpg") no-repeat
-    center;
-
-  max-width: 100%;
-  display: block;
-  aspect-ratio: 1;
-  object-fit: cover;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-body {
-  min-height: 100%;
-  padding: 3vw;
-  background-color: #0c0d20;
-  display: grid;
-  place-content: center;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 30ch), 1fr));
-  gap: 5vmax;
-  width: min(80ch, 100%);
-  margin-inline: auto;
-}
