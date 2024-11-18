@@ -199,12 +199,11 @@
   overflow: hidden;
 }
 
-/* Base styles for each slide */
 .slider-image {
   position: absolute;
   top: 0;
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
   background-size: 100%;
   background-position: center;
   opacity: 0;
@@ -220,7 +219,6 @@
   z-index: 1;
 }
 
-/* Slicing effect */
 .slider-image::before {
   content: "";
   position: absolute;
@@ -238,20 +236,197 @@
   clip-path: polygon(
     0 0, 50% 0, 50% 100%, 0 100%,
     50% 0, 100% 0, 100% 100%, 50% 100%
-  ); /* Start with a split screen effect */
+  );
 }
 
-/* Keyframes for horizontal slicing */
 @keyframes slice {
   0%, 100% {
       clip-path: polygon(
         0 0, 50% 0, 50% 100%, 0 100%,
         50% 0, 100% 0, 100% 100%, 50% 100%
-      ); /* Initial and final state: split in the middle */
+      );
   }
   50% {
       clip-path: polygon(
         0 0, 100% 0, 100% 100%, 0 100%
-      ); /* Fully visible state */
+      );
   }
 }
+
+/* ----- Aurora Effect on Background ----- */
+
+:root {
+  --bg: #000000;
+  --clr-1: #17153B;
+  --clr-2: #2E236C;
+  --clr-3: #433D8B;
+  --clr-4: #C8ACD6;
+  --blur: 2rem;
+  --fs: clamp(3rem, 8vw, 7rem);
+  --ls: clamp(-1.75px, -0.25vw, -3.5px);
+}
+
+*,
+*::before,
+*::after {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* Position the aurora background behind the content */
+.aurora {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; 
+  pointer-events: none; /* Makes sure it doesn't interfere with mouse interactions */
+  transition: transform 0.5 ease; /* Smooth transition for hover effect */
+}
+
+.aurora__item {
+  overflow: hidden;
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  background-color: var(--clr-1);
+  border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  filter: blur(var(--blur));
+  mix-blend-mode: overlay;
+}
+
+.aurora__item:nth-of-type(1) {
+  top: -50%;
+  animation: aurora-border 5s ease-in-out infinite, aurora-1 30s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(2) {
+  background-color: var(--clr-3);
+  right: 0;
+  top: 0;
+  animation: aurora-border 10s ease-in-out infinite, aurora-2 30s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(3) {
+  background-color: var(--clr-2);
+  left: 0;
+  bottom: 0;
+  animation: aurora-border 10s ease-in-out infinite, aurora-3 30s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(4) {
+  background-color: var(--clr-4);
+  right: 0;
+  bottom: -50%;
+  animation: aurora-border 10s ease-in-out infinite, aurora-4 30s ease-in-out infinite alternate;
+}
+
+.aurora:hover {
+  transform: scale(2);
+}
+
+/* Becomes white when overlaid by aurora */
+.text-content {
+  color: white;
+  mix-blend-mode: difference;
+}
+
+.text-black {
+  color: black !important;
+}
+
+@keyframes aurora-1 {
+  0% {
+    top: 0;
+    right: 0;
+  }
+  50% {
+    top: 100%;
+    right: 75%;
+  }
+  75% {
+    top: 100%;
+    right: 25%;
+  }
+  100% {
+    top: 0;
+    right: 0;
+  }
+}
+
+@keyframes aurora-2 {
+  0% {
+    top: -50%;
+    left: 0%;
+  }
+  60% {
+    top: 100%;
+    left: 75%;
+  }
+  85% {
+    top: 100%;
+    left: 25%;
+  }
+  100% {
+    top: -50%;
+    left: 0%;
+  }
+}
+
+@keyframes aurora-3 {
+  0% {
+    bottom: 0;
+    left: 0;
+  }
+  40% {
+    bottom: 100%;
+    left: 75%;
+  }
+  65% {
+    bottom: 40%;
+    left: 50%;
+  }
+  100% {
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@keyframes aurora-4 {
+  0% {
+    bottom: -50%;
+    right: 0;
+  }
+  50% {
+    bottom: 0%;
+    right: 40%;
+  }
+  90% {
+    bottom: 50%;
+    right: 25%;
+  }
+  100% {
+    bottom: -50%;
+    right: 0;
+  }
+}
+
+@keyframes aurora-border {
+  0% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  }
+  25% {
+    border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%;
+  }
+  50% {
+    border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%;
+  }
+  75% {
+    border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%;
+  }
+  100% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  }
+}
+/* ========== */
