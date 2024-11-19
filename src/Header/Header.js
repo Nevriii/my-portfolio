@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.css';
 
 const Header = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
+  const [rotationAngle, setRotationAngle] = useState(0); // State for rotation angle
 
   const toggleMenu = () => {
     if (!isExpanded) {
@@ -19,10 +20,32 @@ const Header = () => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const angle = scrollPosition % 360; // Keep the angle between 0-360 degrees
+      setRotationAngle(angle);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <header className="container">
-      <div className={`bubble-background ${isExpanded ? 'expanded' : ''}`}></div> {/* Bubble background */}
-      <div className={`toggle-button ${isExpanded ? 'expanded' : ''}`} onClick={toggleMenu}>
+      <div className={`bubble-background ${isExpanded ? 'expanded' : ''}`}></div>
+      <div
+        className={`toggle-button ${isExpanded ? 'expanded' : ''}`}
+        onClick={toggleMenu}
+        style={{
+          transform: `rotate(${rotationAngle}deg)`, // Apply rotation based on scroll
+          transition: 'transform 0.1s linear', // Smooth rotation
+        }}
+      >
         <div className="svg-container">
           <svg
             xmlns="http://www.w3.org/2000/svg"

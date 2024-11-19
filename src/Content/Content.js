@@ -64,7 +64,7 @@ const Content = () => {
                 </div>
             </div>
             <div className="d-flex justify-content-center me-md-5">
-                <div className="slider">
+                <div className="slider" style={{ paddingBottom: '60px' }}>
                     {images.map((image, index) => (
                         <div
                             className={`slider-image ${index === currentImageIndex ? 'active' : ''}`}
@@ -76,25 +76,21 @@ const Content = () => {
             </div>
             <div
                 className="position-absolute bottom-0 start-0 ms-2 mb-2"
-                style={{ width: '100px', paddingLeft: '50px', paddingTop: '70px' }}
+                style={{ width: '100px', paddingLeft: '60px', paddingTop: '80px' }}
             >
                 <p 
                     className="text-content mb-0"
-                    style={{ paddingBottom: '20px', letterSpacing: '5px', fontSize: '12px'}}    
+                    style={{ paddingBottom: '5px', letterSpacing: '6px', fontSize: '12px'}}    
                 >
                     SCROLL
                 </p>
                 <div 
                     className="d-flex flex-column align-items-center"
-                    style={{ paddingLeft: '6px'}}
+                    style={{ paddingLeft: '25px'}}
                 >
                     <div
-                        className="rounded-circle bg-secondary"
-                        style={{ width: '5px', height: '5px' }}
-                    ></div>
-                    <div
                         className="bg-secondary"
-                        style={{ width: '0.5px', height: '50px' }}
+                        style={{ width: '0.5px', height: '60px' }}
                     ></div>
                 </div>
             </div>
