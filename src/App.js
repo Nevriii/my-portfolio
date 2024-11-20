@@ -1,7 +1,8 @@
-//import logo from './logo.svg';
 import './App.css';
 import Header from './Header/Header';
 import Content from './Content/Content';
+import NextContent from './nextContent/nextContent';
+import './Header/Header.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
     <div className="App">
       <div className='App-Header'>
         <Header />
-        <Content />
+        <Content /> <br />
+        <div className='aboutbg'><NextContent /></div>
       </div>
     </div>
   );

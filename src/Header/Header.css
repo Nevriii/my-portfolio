@@ -1,3 +1,42 @@
+/* ----- BACKGROUND COLORS ----- */
+.mainbody {
+  background: #ffffff;
+}
+
+.about-container {
+  position: relative; /* To position content relative to the container */
+  width: 100%;
+  height: 100vh; /* Full-screen height */
+  overflow: hidden; /* Prevent overflow issues */
+  background: #ffffff; /* White background */
+}
+
+.about-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  filter: blur(5px); /* Adjust blur intensity */
+  z-index: -1; /* Place it behind the content */
+}
+
+.content-wrapper {
+  position: relative; /* Ensure it's above the blurred background */
+  z-index: 1; /* Layer above the background */
+  background: rgba(255, 255, 255, 0.95); /* Optional: slightly transparent white for contrast */
+  padding: 2rem;
+  border-radius: 1rem; /* Aesthetic border rounding */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+}
+
+
+
+
+/* ============ */
+
 .container {
   margin-top: 5px;
   padding-top: 5%;

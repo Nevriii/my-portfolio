@@ -51,12 +51,12 @@ const Content = () => {
     return (
         <div className="container d-flex flex-column flex-md-row align-items-center justify-content-center my-5">
             <div className="d-flex flex-column flex-md-row align-items-center justify-content-center my-5">
-                <div className="text-content ms-md-1 text-center text-md-start concept-seven">
-                    <h1 className="display-4 roboto-thin ms-md-1">
-                        <span className="animated-word hello" data-word="Hello,">Hello,</span>
-                        <span className="animated-word i" data-word="I">I</span>
-                        <span className="animated-word am" data-word="am">am</span>{' '}
-                        <span className="animated-word name text-info roboto-regular" data-word="Ervin">Ervin</span>
+                <div className="ms-md-1 text-center text-md-start concept-seven">
+                    <h1 className="display-4 roboto-thin ms-md-1"><div className='text-content'></div>
+                        <span className="text-content animated-word hello" data-word="Hello,">Hello,</span>
+                        <span className="text-content animated-word i" data-word="I">I</span>
+                        <span className="text-content animated-word am" data-word="am">am</span>{' '}
+                        <span className="text-content animated-word name text-info roboto-regular" data-word="Ervin">Ervin</span>
                     </h1>
                     <p className="text-content ms-md-2 text-center text-md-start roboto-light concept-three">
                         An aspiring <span className="animated-profession roboto-black text-success" data-word="Software Engineer">Software Engineer</span>
