@@ -9,6 +9,7 @@
   height: 100vh; /* Full-screen height */
   overflow: hidden; /* Prevent overflow issues */
   background: #ffffff; /* White background */
+  padding: 20px;
 }
 
 .about-container::before {
