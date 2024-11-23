@@ -14,12 +14,12 @@ import SpringBootLogo from '../Images/Logos/springbootlogo.png';
 
 const NextContent = () => {
     return (
-        <div className="about-container my-5">
+        <div className="mainContent-container my-5">
                     <h1 className="display-4 roboto-regular" style={{ letterSpacing: '5px', paddingTop: "65px" }}>
                         About
                     </h1>
             <div className="container d-flex flex-column flex-md-row align-items-start justify-content-center">
-                <div className="gallery-wrapper container d-flex flex-wrap flex-md-column me-md-5" style={{ paddingRight: "50px" }}>
+                <div className="gallery-wrapper container d-flex flex-wrap flex-md-column me-md-5" style={{ paddingRight: "20px" }}>
                     <div className="gallery">
                         <span style={{ "--i": 1 }}>
                             <img src={JavaLogo} alt="Java Logo" />
@@ -61,13 +61,15 @@ const NextContent = () => {
                         </span>
                     </div>
                 </div>
-                <div className="container text-content1 ms-md-3" style={{ paddingLeft: "60px" }}>
-                    <p className="robot-thin adjust-font">
-                        I'm a Computer Science Student at Mapúa University specializing in Application Development.
-                        Throughout my journey as a student, I have developed projects that uses Java, JavaScript,
-                        Python, HTML, CSS, PHP, and MySQL. I also have experience using frameworks such as ReactJS,
-                        Angular, Ionic, and Spring Boot.
-                    </p>
+                <div className="container d-flex flex-column flex-md-row align-items-start justify-content-center">
+                    <div className="container text-content1 ms-md-3" style={{ paddingLeft: "10px"}}>
+                        <p className="robot-thin adjust-font">
+                            I'm a Computer Science Student at Mapúa University specializing in Application Development.
+                            Throughout my journey as a student, I have developed projects that uses Java, JavaScript,
+                            Python, HTML, CSS, PHP, and MySQL. I also have experience using frameworks such as ReactJS,
+                            Angular, Ionic, and Spring Boot.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

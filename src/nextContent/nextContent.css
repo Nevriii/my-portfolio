@@ -12,7 +12,7 @@
     position: relative;
     display: flex;
     gap: 2%; /* Controls spacing between images in each row */
-    width: 500px;
+    width: auto;
     height: 100px;
     transform-style: preserve-3d;
     animation: rotate 35s linear infinite;
@@ -58,12 +58,12 @@
         flex-direction: column;
         align-items: center;
         padding-right: 0;
-        margin-right: 0;
+        margin-right: 10px;
     }
 
     .gallery {
         width: 100%; /* Allow gallery to adapt to screen size */
-        gap: 10px;
+        gap: 1px;
         animation: rotate 40s linear infinite; /* Slow down the animation for better readability */
     }
 
@@ -84,7 +84,7 @@
         padding: 5px;
     }
 
-    .about-container {
-        padding: 10px; /* Add padding for mobile view */
+    .mainContent-container {
+        padding: 5px; /* Add padding for mobile view */
     }
 }
