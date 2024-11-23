@@ -52,13 +52,14 @@ const Content = () => {
         <div className="container d-flex flex-column flex-md-row align-items-center justify-content-center my-5">
             <div className="d-flex flex-column flex-md-row align-items-center justify-content-center my-5">
                 <div className="ms-md-1 text-center text-md-start concept-seven">
-                    <h1 className="display-4 roboto-thin ms-md-1"><div className='text-content'></div>
-                        <span className="text-content animated-word hello" data-word="Hello,">Hello,</span>
-                        <span className="text-content animated-word i" data-word="I">I</span>
-                        <span className="text-content animated-word am" data-word="am">am</span>{' '}
-                        <span className="text-content animated-word name text-info roboto-regular" data-word="Ervin">Ervin</span>
+                    <h1 className="display-4 roboto-thin ms-md-1">
+                        <span className="text-content"></span>
+                        <span className="text-content animated-word hello" data-word="Hello," style={{ fontSize:"50px" }}>Hello,</span>
+                        <span className="text-content animated-word i" data-word="I" style={{ fontSize:"50px" }}>I</span>{' '}
+                        <span className="text-content animated-word am" data-word="am" style={{ fontSize:"50px" }}>am</span>{' '}
+                        <span className="text-content animated-word name text-info roboto-bold" data-word="Ervin" style={{ fontSize:"50px" }}>Ervin</span>
                     </h1>
-                    <p className="text-content ms-md-2 text-center text-md-start roboto-light concept-three">
+                    <p className="text-content ms-md-2 text-center text-md-start roboto-light">
                         An aspiring <span className="animated-profession roboto-black text-success" data-word="Software Engineer">Software Engineer</span>
                     </p>
                 </div>
