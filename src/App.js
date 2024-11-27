@@ -3,6 +3,7 @@ import Header from './Header/Header';
 import Content from './Content/Content';
 import NextContent from './nextContent/nextContent';
 import ThirdContent from './thirdContent/thirdContent';
+import FourthContent from './fourthContent/fourthContent';
 import Footer from './Footer/Footer';
 import './Header/Header.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +18,7 @@ function App() {
           <NextContent />
           <ThirdContent />
         </div>
+        <FourthContent />
         <Footer />
       </div>
     </div>

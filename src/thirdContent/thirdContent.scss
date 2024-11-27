@@ -1,26 +1,207 @@
-figure {
-	position: sticky;
-	top: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 1vw;
-	height: 1vh;
-
-	$photos: 8;
-
-	@for $i from 1 through $photos {
-		&:nth-child(#{$i}) {
-			img {
-				$rotation: (($i - 1)/ ($photos - 1)) - 0.5;
-				transform: scale(0.6) rotate($rotation * 25deg);
-			}
+@mixin varset($key) {
+	$map: vars($key);
+	
+	--x: #{map-get($map, x)};
+	--z: #{map-get($map, z)};
+	--scale: #{map-get($map, s)};
+	--rotate: #{map-get($map, r)};
+  }
+  
+  @function vars($key) {
+	@return map-get((
+	  0: (z: 0, s: 1, r: 0deg, x: 0),
+	  1: (z: 40, s: 0.95, r: 8deg, x: -4),
+	  2: (z: 0, s: 0.9, r: 12deg, x: -8),
+	  3: (z: -40, s: 0.85, r: 16deg, x: -12),
+	  4: (z: 80, s: 0.95, r: -8deg, x: 8),
+	  5: (z: 40, s: 0.9, r: -12deg, x: 12),
+	  6: (z: 0, s: 0.85, r: -16deg, x: 16),
+	  9: (z: 100, s: 1, r: 0deg, x: 0)
+	  ), $key);
+  }
+  
+  .gallery2 {
+	margin: auto;
+	height: 100%;
+	width: clamp(20rem, 30vmin, 100%);
+	position: relative;
+	  perspective: 1000px;
+	  transform-style: preserve-3d;
+	
+	&:hover {
+	  .gallery2-figure {
+		  transition: transform 0.4s cubic-bezier(0.19, 0.14, 0, 1.32), z-index 0s 0.1s linear;
+		
+		&:nth-child(4) {
+		  @include varset(9);
 		}
+		
+		&:nth-child(3) {
+		  @include varset(1);
+		  
+		  &:hover {
+			@include varset(9);
+			
+			& ~ .gallery2-figure {
+			  @include varset(4);
+			}
+		  }
+		}
+		&:nth-child(2) {
+		  @include varset(2);
+		  
+		  &:hover {
+			@include varset(9);
+			
+			& ~ .gallery2-figure {
+			  &:nth-child(3) {
+				@include varset(4);
+			  }
+  
+			  &:nth-child(4) {
+				@include varset(5);
+			  }
+			}
+		  }
+		}
+		&:nth-child(1) {
+		  @include varset(3);
+		  
+		  &:hover {
+			@include varset(9);
+			
+			& ~ .gallery2-figure {
+			  &:nth-child(2) {
+				@include varset(4);
+			  }
+			  
+			  &:nth-child(3) {
+				@include varset(5);
+			  }
+  
+			  &:nth-child(4) {
+				@include varset(6);
+			  }
+			}
+		  }
+		}
+	  }
 	}
-
-	img {
-		width: 50vmin;
-		height: 50vmin;
-		border-radius: 3px;
+  }
+  
+  .gallery2-figure {
+	position: absolute;
+	width: 80%;
+	aspect-ratio: 1/1;
+	box-shadow: 0 0 0 6px #fff;
+	transform: scale(var(--scale, 1)) rotateY(var(--rotate, 0deg)) translateY(-50%) translateZ(calc(var(--z, 0) * 1px)) translateX(calc(var(--x, 0) * 1%));
+	z-index: var(--z);
+	  transition: transform 0.2s ease;
+	margin: 0;
+	
+	&:nth-child(1) {
+	  top: 40%;
+	  left: 0;
 	}
-}
+	&:nth-child(2) {
+	  top: 45%;
+	  left: 10%;
+	}
+	&:nth-child(3) {
+	  top: 50%;
+	  left: 20%;
+	}
+	&:nth-child(4) {
+	  top: 55%;
+	  left: 30%;
+	}
+	
+	&::before,
+	&::after {
+	  content: '';
+	  position: absolute;
+	}
+	
+	&::before {
+	  width: 1.2vmin;
+	  aspect-ratio: 1/1;
+	  background-color: #bf360c;
+	  top: 0;
+	  right: 0;
+	  clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+	  z-index: 1;
+	}
+	
+	&::after {
+	  content: '';
+	  position: absolute;
+	  inset: 0;
+	  background-image: linear-gradient(128deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+	  opacity: 0.6;
+	  mix-blend-mode: overlay;
+	  filter: sepia(.2) brightness(1.15) saturate(1.4);
+	}
+  }
+  
+  .gallery2-image {
+	display: block;
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+  }
+  
+  .gallery2-caption {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	padding: 0.5rem 1rem;
+	line-height: 1.6;
+	font-size: 4.2vmin;
+	font-family: 'Pacifico', cursive;
+	background-image: linear-gradient(to right, #fdd835, #b71c1c 30%, #9f0000);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  }
+  
+  .gallery2-spec {
+	font-size: 1.6vmin;
+	height: 3vmin;
+	line-height: 3vmin;
+	font-weight: normal;
+	font-family: 'Anek Bangla', sans-serif;
+	text-transform: uppercase;
+	margin: 0;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	color: #fff;
+	padding: 0.25rem 1rem 0 0.5rem;
+	background-color: #fff;
+	clip-path: polygon(0% 0%, 92% 0%, 100% 100%, 0% 100%);
+	-webkit-text-fill-color: #b71c1c;
+	box-shadow: 0 0 0 1px #fff;
+  }
+  
+  * {
+	box-sizing: border-box;
+	
+	&:before,
+	&:after {
+	  box-sizing: inherit;
+	}
+  }
+  
+  @keyframes blink {
+	0%, 100% {
+	  opacity: 0.3;
+	}
+	
+	33% {
+	  opacity: 0.8;
+	}
+  }
