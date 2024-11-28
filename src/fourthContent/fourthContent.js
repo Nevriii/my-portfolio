@@ -24,15 +24,13 @@ const FourthContent = () => {
   }, []);
 
   return (
-    <div className="content-wrapper"> {/* Acts as the `body` replacement */}
-      <div className="photo-gallery">
-        <h1 className="gallery-title">Certificates</h1>
+    <div className="mainBody"> {/* Acts as the `body` replacement */}
+        <h1 className="display-4 roboto-thin ms-md-1" style={{ letterSpacing: "5px", paddingTop: "65px" }}>Certificates</h1>
         {Photo.map((photo, index) => (
           <figure key={index}>
             <img src={photo} alt={`Certificate ${index + 1}`} />
           </figure>
         ))}
-      </div>
     </div>
   );
 };

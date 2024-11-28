@@ -17,8 +17,9 @@ function App() {
         <div className="mainbody">
           <NextContent />
           <ThirdContent />
+          <FourthContent />
         </div>
-        <FourthContent />
+        
         <Footer />
       </div>
     </div>
